@@ -1,13 +1,13 @@
 <script setup>
 import { onMounted } from 'vue'
 //const title = ref('Hello There ✋')
-import MainCard from '@/components/MainCard.vue';
+import MainCards from '@/components/MainCards.vue';
 import MainPagination from '@/components/MainPagination.vue';
 import useAPI from '@/composables/useAPI';
 
 const { getEmployees, loading } = useAPI()
 
-onMounted(async () => {
+onMounted( async () => {
   await getEmployees()
 })
 
@@ -15,6 +15,8 @@ onMounted(async () => {
 
 <template>
   <p v-if="loading">LOADING...></p>
-   <MainCard></MainCard>
+  <div v-else>
+   <MainCards></MainCards>
    <MainPagination></MainPagination>
+   </div>
 </template>
